@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, ReactElement } from "react";
 import { CollectionContext } from "./collection";
 
-export interface WidgetProps {
+export interface WidgetProps<T = any> {
   name: string;
-  children: (data: any) => JSX.Element;
+  type: string;
+  children?: (data: T) => ReactElement | null;
   label?: string;
   default?: string;
   placeholder?: string;
@@ -11,7 +12,12 @@ export interface WidgetProps {
   hidden?: boolean;
 }
 
-export const Widget: React.FC<WidgetProps> = ({ name, children }) => {
+export const Widget: React.FC<WidgetProps> = ({ name, children, hidden }) => {
   const context = useContext(CollectionContext);
-  return children(context[name]);
+
+  if (hidden) {
+    return null;
+  }
+
+  return children ? children(context[name]) : context[name];
 };
