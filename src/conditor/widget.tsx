@@ -7,7 +7,6 @@ export interface WidgetProps<T = any> extends SimpleWidgetProps {
 
 export interface SimpleWidgetProps {
   name: string;
-  type: string;
   label?: string;
   default?: string;
   placeholder?: string;
@@ -15,7 +14,11 @@ export interface SimpleWidgetProps {
   hidden?: boolean;
 }
 
-export const Widget: React.FC<WidgetProps> = ({ name, children, hidden }) => {
+export const Widget: React.FC<
+  WidgetProps & {
+    type: string;
+  }
+> = ({ name, children, hidden }) => {
   const context = useContext(CollectionContext);
 
   if (hidden) {

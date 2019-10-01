@@ -1,17 +1,15 @@
 import React, { ReactElement } from "react";
-import { Widget, SimpleWidgetProps } from "./widget";
+import { Widget, WidgetProps } from "./widget";
 import { CollectionContext } from "./collection";
 
-export interface ObjectProps extends SimpleWidgetProps {
-  children: ReactElement;
-}
+export interface ObjectProps extends WidgetProps<Record<string, any>> {}
 
 export const Object: React.FC<ObjectProps> = ({ children, ...widgetProps }) => {
   return (
     <Widget {...widgetProps} type="group">
       {data => (
         <CollectionContext.Provider value={data}>
-          {children}
+          {children && children(data)}
         </CollectionContext.Provider>
       )}
     </Widget>

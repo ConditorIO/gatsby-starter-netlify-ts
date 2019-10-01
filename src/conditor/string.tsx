@@ -2,8 +2,7 @@ import React from "react";
 import { WidgetProps, Widget } from "./widget";
 
 export interface StringProps extends WidgetProps<string> {
-  multiple: true;
-  options: string[] | { [k: string]: string };
+  type?: "string";
 }
 
 export const String: React.FC<StringProps> = ({ children, ...widgetProps }) => {
