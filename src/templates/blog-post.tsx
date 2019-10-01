@@ -57,7 +57,7 @@ const BlogPost: FC<Props> = ({ data }) => {
   const { markdownRemark: post } = data;
 
   return (
-    <Collection name="posts" label="Posts" data={post.frontmatter}>
+    <Collection name="posts" data={post.frontmatter}>
       <String name="title" hidden />
       <String name="description" hidden />
       <Layout>
