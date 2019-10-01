@@ -5,7 +5,7 @@ export interface CollectionData {
 }
 
 export interface CollectionProps {
-  type: string;
+  name: string;
   data: CollectionData;
   label?: string;
   labelSingular?: string;
