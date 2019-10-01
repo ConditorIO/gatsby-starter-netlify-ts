@@ -1,10 +1,13 @@
 import React, { useContext, ReactElement } from "react";
 import { CollectionContext } from "./collection";
 
-export interface WidgetProps<T = any> {
+export interface WidgetProps<T = any> extends SimpleWidgetProps {
+  children?: (data: T) => ReactElement | null;
+}
+
+export interface SimpleWidgetProps {
   name: string;
   type: string;
-  children?: (data: T) => ReactElement | null;
   label?: string;
   default?: string;
   placeholder?: string;
